@@ -14,7 +14,7 @@
   <Overview>
 Facet is a self-hosted personal profile platform that lets you create multiple views of your professional profile for different audiences (recruiters, conferences, clients).
 
-You own your data and control what each audience sees. On first run, you will create your admin account and configure access options.
+You own your data and control what each audience sees.
   </Overview>
 
   <Category>Tools:</Category>
@@ -44,6 +44,17 @@ You own your data and control what each audience sees. On first run, you will cr
     Display="always"
     Required="true"
     Mask="false">8080</Config>
+
+  <Config
+    Name="Default Login"
+    Target=""
+    Default=""
+    Mode=""
+    Description="Default pass for first run: changeme123 (You will be prompted to change immediately after login)."
+    Type="Label"
+    Display="always"
+    Required="false"
+    Mask="false"/>
 
   <!-- Permissions -->
   <Config
