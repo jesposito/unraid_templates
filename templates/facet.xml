@@ -15,8 +15,6 @@
 Facet is a self-hosted personal profile platform that lets you create multiple views of your professional profile for different audiences (recruiters, conferences, clients).
 
 You own your data and control what each audience sees.
-
-Default login: admin@example.com / changeme123 (you'll be prompted to change the password immediately after first login)
   </Overview>
 
   <Category>Tools:</Category>
@@ -34,7 +32,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
 
   <Requires/>
 
-  <!-- Network -->
+  <!-- Web UI Port -->
   <Config
     Name="Web UI Port"
     Target="8080"
@@ -46,30 +44,19 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="true"
     Mask="false">8080</Config>
 
-  <!-- Permissions -->
+  <!-- Default Login Info -->
   <Config
-    Name="PUID"
-    Target="PUID"
-    Default="99"
+    Name="Default Login"
+    Target=""
+    Default=""
     Mode=""
-    Description="User ID for file permissions. Use 99 for Unraid's nobody user, or match your host user's UID."
-    Type="Variable"
-    Display="advanced"
+    Description="Default pass for first run: changeme123 (You will be prompted to change immediately after login)."
+    Type="Label"
+    Display="always"
     Required="false"
-    Mask="false">99</Config>
+    Mask="false"/>
 
-  <Config
-    Name="PGID"
-    Target="PGID"
-    Default="100"
-    Mode=""
-    Description="Group ID for file permissions. Use 100 for Unraid's users group, or match your host user's GID."
-    Type="Variable"
-    Display="advanced"
-    Required="false"
-    Mask="false">100</Config>
-
-  <!-- Storage -->
+  <!-- App Data -->
   <Config
     Name="App Data"
     Target="/data"
@@ -81,6 +68,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="true"
     Mask="false">/mnt/user/appdata/facet</Config>
 
+  <!-- Uploads -->
   <Config
     Name="Uploads"
     Target="/uploads"
@@ -92,18 +80,19 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="true"
     Mask="false">/mnt/user/appdata/facet/uploads</Config>
 
-  <!-- Core App -->
+  <!-- Admin Email -->
   <Config
     Name="Admin Email"
     Target="ADMIN_EMAILS"
-    Default="admin@example.com"
+    Default=""
     Mode=""
-    Description="Email address you'll use to login to Facet. This is your admin username."
+    Description="Email address for admin access. Required for all authentication methods."
     Type="Variable"
     Display="always"
     Required="true"
     Mask="false"/>
 
+  <!-- Public URL -->
   <Config
     Name="Public URL"
     Target="APP_URL"
@@ -115,6 +104,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="false"/>
 
+  <!-- Trust Proxy -->
   <Config
     Name="Trust Proxy"
     Target="TRUST_PROXY"
@@ -126,7 +116,31 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="false">true</Config>
 
-  <!-- OAuth -->
+  <!-- PUID -->
+  <Config
+    Name="PUID"
+    Target="PUID"
+    Default="99"
+    Mode=""
+    Description="User ID for file permissions. Use 99 for Unraid's nobody user, or match your host user's UID."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">99</Config>
+
+  <!-- PGID -->
+  <Config
+    Name="PGID"
+    Target="PGID"
+    Default="100"
+    Mode=""
+    Description="Group ID for file permissions. Use 100 for Unraid's users group, or match your host user's GID."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">100</Config>
+
+  <!-- Google Client ID -->
   <Config
     Name="Google Client ID"
     Target="GOOGLE_CLIENT_ID"
@@ -138,6 +152,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="false"/>
 
+  <!-- Google Client Secret -->
   <Config
     Name="Google Client Secret"
     Target="GOOGLE_CLIENT_SECRET"
@@ -149,6 +164,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="true"/>
 
+  <!-- GitHub Client ID -->
   <Config
     Name="GitHub Client ID"
     Target="GITHUB_CLIENT_ID"
@@ -160,6 +176,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="false"/>
 
+  <!-- GitHub Client Secret -->
   <Config
     Name="GitHub Client Secret"
     Target="GITHUB_CLIENT_SECRET"
@@ -171,7 +188,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="true"/>
 
-  <!-- AI Integrations -->
+  <!-- OpenAI API Key -->
   <Config
     Name="OpenAI API Key"
     Target="OPENAI_API_KEY"
@@ -183,6 +200,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="true"/>
 
+  <!-- Anthropic API Key -->
   <Config
     Name="Anthropic API Key"
     Target="ANTHROPIC_API_KEY"
@@ -194,6 +212,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="true"/>
 
+  <!-- Ollama URL -->
   <Config
     Name="Ollama URL"
     Target="OLLAMA_BASE_URL"
@@ -205,6 +224,7 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="false"
     Mask="false"/>
 
+  <!-- Ollama Model -->
   <Config
     Name="Ollama Model"
     Target="OLLAMA_MODEL"
@@ -215,17 +235,5 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Display="advanced"
     Required="false"
     Mask="false">llama3.2</Config>
-
-  <!-- Advanced -->
-  <Config
-    Name="Admin UI (Advanced)"
-    Target="ADMIN_ENABLED"
-    Default="false"
-    Mode=""
-    Description="Enables the PocketBase admin UI at /_/ for troubleshooting. Leave disabled unless needed."
-    Type="Variable"
-    Display="advanced"
-    Required="false"
-    Mask="false">false</Config>
 
 </Container>
