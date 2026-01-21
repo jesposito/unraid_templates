@@ -15,8 +15,6 @@
 Facet is a self-hosted personal profile platform that lets you create multiple views of your professional profile for different audiences (recruiters, conferences, clients).
 
 You own your data and control what each audience sees.
-
-Default login: admin@example.com / changeme123 (you'll be prompted to change the password immediately after first login)
   </Overview>
 
   <Category>Tools:</Category>
@@ -46,28 +44,17 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Required="true"
     Mask="false">8080</Config>
 
-  <!-- Permissions -->
+  <!-- Default Login Info -->
   <Config
-    Name="PUID"
-    Target="PUID"
-    Default="99"
+    Name="Default Login"
+    Target=""
+    Default=""
     Mode=""
-    Description="User ID for file permissions. Use 99 for Unraid's nobody user, or match your host user's UID."
-    Type="Variable"
-    Display="advanced"
+    Description="Default pass for first run: changeme123 (You will be prompted to change immediately after login)."
+    Type="Label"
+    Display="always"
     Required="false"
-    Mask="false">99</Config>
-
-  <Config
-    Name="PGID"
-    Target="PGID"
-    Default="100"
-    Mode=""
-    Description="Group ID for file permissions. Use 100 for Unraid's users group, or match your host user's GID."
-    Type="Variable"
-    Display="advanced"
-    Required="false"
-    Mask="false">100</Config>
+    Mask="false"/>
 
   <!-- Storage -->
   <Config
@@ -96,9 +83,9 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
   <Config
     Name="Admin Email"
     Target="ADMIN_EMAILS"
-    Default="admin@example.com"
+    Default=""
     Mode=""
-    Description="Email address you'll use to login to Facet. This is your admin username."
+    Description="Email address for admin access. Required for all authentication methods."
     Type="Variable"
     Display="always"
     Required="true"
@@ -125,6 +112,29 @@ Default login: admin@example.com / changeme123 (you'll be prompted to change the
     Display="always"
     Required="false"
     Mask="false">true</Config>
+
+  <!-- Permissions -->
+  <Config
+    Name="PUID"
+    Target="PUID"
+    Default="99"
+    Mode=""
+    Description="User ID for file permissions. Use 99 for Unraid's nobody user, or match your host user's UID."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">99</Config>
+
+  <Config
+    Name="PGID"
+    Target="PGID"
+    Default="100"
+    Mode=""
+    Description="Group ID for file permissions. Use 100 for Unraid's users group, or match your host user's GID."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">100</Config>
 
   <!-- OAuth -->
   <Config
