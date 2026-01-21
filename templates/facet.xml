@@ -34,208 +34,184 @@ Default password: changeme123 (you will be prompted to change it on first login)
 
   <Requires/>
 
-  <!-- Web UI Port -->
+  <!-- ==================== ALWAYS VISIBLE ==================== -->
+
   <Config
     Name="Web UI Port"
     Target="8080"
     Default="8080"
     Mode="tcp"
-    Description="The port used to access Facet in your browser. Change this if 8080 is already in use."
+    Description="The port used to access Facet in your browser."
     Type="Port"
     Display="always"
     Required="true"
     Mask="false">8080</Config>
 
-  <!-- App Data -->
   <Config
     Name="App Data"
     Target="/data"
     Default="/mnt/user/appdata/facet"
     Mode="rw"
-    Description="Database and core configuration storage. Include this path in your appdata backups."
+    Description="Database and configuration storage. Include this in your backups."
     Type="Path"
     Display="always"
     Required="true"
     Mask="false">/mnt/user/appdata/facet</Config>
 
-  <!-- Uploads -->
   <Config
     Name="Uploads"
     Target="/uploads"
     Default="/mnt/user/appdata/facet/uploads"
     Mode="rw"
-    Description="Storage for uploaded images and files. Can grow large depending on usage."
+    Description="Storage for uploaded images and files."
     Type="Path"
     Display="always"
     Required="true"
     Mask="false">/mnt/user/appdata/facet/uploads</Config>
 
-  <!-- Admin Email -->
   <Config
     Name="Admin Email"
     Target="ADMIN_EMAILS"
     Default=""
     Mode=""
-    Description="Email address for admin access. Required for all authentication methods."
+    Description="Email address for admin login."
     Type="Variable"
     Display="always"
     Required="true"
     Mask="false"/>
 
-  <!-- Public URL -->
   <Config
     Name="Public URL"
     Target="APP_URL"
     Default=""
     Mode=""
-    Description="Public URL for Facet (e.g. https://facet.yourdomain.com or http://192.168.1.100:8080). Used for OAuth callbacks and share links."
+    Description="Your Facet URL (e.g. https://facet.yourdomain.com). Required for OAuth and share links."
     Type="Variable"
     Display="always"
     Required="false"
     Mask="false"/>
 
-  <!-- Trust Proxy -->
   <Config
     Name="Trust Proxy"
     Target="TRUST_PROXY"
     Default="true"
     Mode=""
-    Description="Leave enabled if running behind Nginx Proxy Manager, Traefik, Cloudflare Tunnel, or another reverse proxy."
+    Description="Enable if behind a reverse proxy (NPM, Traefik, Cloudflare)."
     Type="Variable"
     Display="always"
     Required="false"
     Mask="false">true</Config>
 
-  <!-- PUID -->
+  <!-- ==================== ADVANCED (Show more settings) ==================== -->
+
   <Config
     Name="PUID"
     Target="PUID"
     Default="99"
     Mode=""
-    Description="User ID for file permissions. Use 99 for Unraid's nobody user, or match your host user's UID."
+    Description="User ID for file permissions."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false">99</Config>
 
-  <!-- PGID -->
   <Config
     Name="PGID"
     Target="PGID"
     Default="100"
     Mode=""
-    Description="Group ID for file permissions. Use 100 for Unraid's users group, or match your host user's GID."
+    Description="Group ID for file permissions."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false">100</Config>
 
-  <!-- Google Client ID -->
   <Config
     Name="Google Client ID"
     Target="GOOGLE_CLIENT_ID"
     Default=""
     Mode=""
-    Description="Client ID for 'Sign in with Google'. Redirect URI: YOUR_URL/api/oauth2-redirect"
+    Description="For 'Sign in with Google'. Redirect URI: YOUR_URL/api/oauth2-redirect"
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false"/>
 
-  <!-- Google Client Secret -->
   <Config
     Name="Google Client Secret"
     Target="GOOGLE_CLIENT_SECRET"
     Default=""
     Mode=""
-    Description="Client secret from Google Cloud Console."
+    Description="From Google Cloud Console."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="true"/>
 
-  <!-- GitHub Client ID -->
   <Config
     Name="GitHub Client ID"
     Target="GITHUB_CLIENT_ID"
     Default=""
     Mode=""
-    Description="Client ID for 'Sign in with GitHub'. Redirect URI: YOUR_URL/api/oauth2-redirect"
+    Description="For 'Sign in with GitHub'. Redirect URI: YOUR_URL/api/oauth2-redirect"
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false"/>
 
-  <!-- GitHub Client Secret -->
   <Config
     Name="GitHub Client Secret"
     Target="GITHUB_CLIENT_SECRET"
     Default=""
     Mode=""
-    Description="Client secret from GitHub OAuth App settings."
+    Description="From GitHub OAuth App settings."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="true"/>
 
-  <!-- OpenAI API Key -->
   <Config
     Name="OpenAI API Key"
     Target="OPENAI_API_KEY"
     Default=""
     Mode=""
-    Description="Enables AI features such as content rewriting and summaries."
+    Description="For AI features (optional)."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="true"/>
 
-  <!-- Anthropic API Key -->
   <Config
     Name="Anthropic API Key"
     Target="ANTHROPIC_API_KEY"
     Default=""
     Mode=""
-    Description="Optional alternative to OpenAI using Claude models."
+    Description="Alternative to OpenAI (optional)."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="true"/>
 
-  <!-- Ollama URL -->
   <Config
     Name="Ollama URL"
     Target="OLLAMA_BASE_URL"
     Default=""
     Mode=""
-    Description="URL of a local Ollama instance (e.g. http://192.168.1.100:11434)."
+    Description="Local Ollama instance URL (e.g. http://192.168.1.100:11434)."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false"/>
 
-  <!-- Ollama Model -->
   <Config
     Name="Ollama Model"
     Target="OLLAMA_MODEL"
     Default="llama3.2"
     Mode=""
-    Description="Ollama model to use when enabled."
+    Description="Ollama model name."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false">llama3.2</Config>
-
-  <!-- Admin UI (Advanced) -->
-  <Config
-    Name="Admin UI (Advanced)"
-    Target="ADMIN_ENABLED"
-    Default="false"
-    Mode=""
-    Description="Enables the PocketBase admin UI at /_/ for troubleshooting. Leave disabled unless needed."
-    Type="Variable"
-    Display="advanced"
-    Required="false"
-    Mask="false">false</Config>
 
 </Container>
