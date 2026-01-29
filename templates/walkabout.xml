@@ -26,8 +26,6 @@
         - Trip planning with date flexibility &#xD;
         - Server-rendered dashboard (no JavaScript required) &#xD;
         &#xD;
-        Requires a PostgreSQL database (use the official postgres:15 container). &#xD;
-        &#xD;
         API keys and notification settings are configured in-app via the Settings page. &#xD;
         &#xD;
         Also check out Facet - a self-hosted personal profile platform: https://github.com/jesposito/Facet
@@ -42,15 +40,11 @@
     </Maintainer>
     <DonateText>Buy me a coffee</DonateText>
     <DonateLink>https://buymeacoffee.com/jesposito</DonateLink>
-    <Requires>
-        Requires a PostgreSQL 15+ database container. Create the database before starting Walkabout.
-    </Requires>
     <Changes>
         ### 2026-01-30
 
-        - Make Web UI Port and App Data visible
-        - Add donate link
-        - Fix PUID/PGID values and descriptions
+        - Switch to embedded SQLite (no external database required)
+        - Simplify configuration
 
         ### 2026-01-30
 
@@ -58,13 +52,14 @@
     </Changes>
     <!-- ==================== ALWAYS VISIBLE ==================== -->
     <Config Name="Web UI Port" Target="8000" Default="8000" Mode="tcp" Description="Container Port: 8000" Type="Port" Display="always" Required="true" Mask="false">8000</Config>
-    <Config Name="App Data" Target="/app/data" Default="/mnt/user/appdata/walkabout/data" Description="Path to app data (screenshots, snapshots). Include this in backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/walkabout/data</Config>
-    <Config Name="Database URL" Target="DATABASE_URL" Default="postgresql://walkabout:password@postgres:5432/walkabout" Description="PostgreSQL connection string. Format: postgresql://user:password@host:port/database" Type="Variable" Display="always" Required="true" Mask="false">postgresql://walkabout:password@postgres:5432/walkabout</Config>
+    <Config Name="App Data" Target="/app/data" Default="/mnt/user/appdata/walkabout/data" Description="Path to app data (database, screenshots). Include this in backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/walkabout/data</Config>
     <Config Name="Public URL" Target="BASE_URL" Default="http://IP_ADDRESS:8000" Description="Public URL for Walkabout. Used for notification links." Type="Variable" Display="always" Required="true" Mask="false">http://IP_ADDRESS:8000</Config>
     <Config Name="Timezone" Target="TZ" Default="America/New_York" Description="Timezone for scheduling and display." Type="Variable" Display="always" Required="true" Mask="false">America/New_York</Config>
     <!-- ==================== ADVANCED (Show more settings) ==================== -->
     <Config Name="PUID" Target="PUID" Default="99" Description="User ID for file permissions." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
     <Config Name="PGID" Target="PGID" Default="100" Description="Group ID for file permissions." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
     <!-- ==================== ADVANCED-HIDE (Internal settings) ==================== -->
+    <Config Name="Database URL" Target="DATABASE_URL" Default="sqlite:///./data/walkabout.db" Description="Internal database path. Do not change." Type="Variable" Display="advanced-hide" Required="true" Mask="false">sqlite:///./data/walkabout.db</Config>
     <Config Name="Environment" Target="ENV" Default="prod" Description="Environment mode. Do not change." Type="Variable" Display="advanced-hide" Required="true" Mask="false">prod</Config>
+    <Config Name="Scheduler Enabled" Target="SCHEDULER_ENABLED" Default="true" Description="Enable background scheduler. Do not change." Type="Variable" Display="advanced-hide" Required="true" Mask="false">true</Config>
 </Container>
