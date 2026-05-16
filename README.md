@@ -7,7 +7,7 @@ My repository of [Unraid](https://discord.gg/qWPbc8R) Docker container templates
 | App | Description |
 |-----|-------------|
 | [Facet](templates/facet.xml) | Self-hosted personal profile platform for recruiters, conferences, and clients |
-| [Walkabout](templates/walkabout.xml) | Self-hosted flight deal monitoring with statistical deal detection |
+
 
 ## Installation
 
