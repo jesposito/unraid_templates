@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+Self-hosted apps I build and run on Unraid.
+
+**Available templates:**
+
+- **Facet** — a self-hosted personal profile platform. Create multiple views of your professional profile for different audiences (recruiters, conferences, clients). You own your data and control what each audience sees.
+- **Translarr** — an AI subtitle translator for the arr stack. Plugs into Sonarr, Radarr, Emby, and Jellyfin. When a release lands with subtitles in the wrong language, Translarr extracts the track, translates it with an LLM, adapts timing for the target language's reading rate, and drops a clean `.srt` next to the video.
+
+All templates are open source under MIT. Support and issues via the GitHub repo for each app.
+  </Profile>
+  <Icon>https://avatars.githubusercontent.com/u/6147236?v=4&amp;s=512</Icon>
+  <WebPage>https://github.com/jesposito</WebPage>
+  <Support>https://github.com/jesposito/unraid_templates/issues</Support>
+</CommunityApplications>

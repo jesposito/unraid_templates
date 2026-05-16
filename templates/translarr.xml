@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Translarr</Name>
+  <Repository>ghcr.io/jesposito/translarr:main</Repository>
+  <Registry>https://github.com/jesposito/translarr/pkgs/container/translarr</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/jesposito/translarr/issues</Support>
+  <Project>https://github.com/jesposito/translarr</Project>
+  <Overview>
+Translarr translates subtitle tracks from the wrong language into your preferred language using AI. It plugs into Sonarr, Radarr, Emby, Jellyfin, and Plex via webhooks and drops translated `.srt` files next to your media.
+
+When a release lands with Russian fansubs on a Japanese anime, or hardcoded Spanish on a Korean drama, Translarr extracts the track, translates it with a context-aware LLM, adjusts timing for the target language's reading rate, and writes a clean `.srt` next to the video.
+
+Features:
+- LLM-powered translation with context awareness (Anthropic Claude, OpenAI, DeepSeek, Gemini, or local Ollama)
+- Automatic reading-rate adaptation so subtitles stay readable
+- Tag-based opt-in via Sonarr/Radarr: only translates what you tag
+- On-demand translation when you press Play in Emby
+- 6 translation presets: Quick &amp; Cheap, Balanced, Best Quality, Local &amp; Free, DeepSeek Budget, Gemini Flash
+- Cost guards: daily and per-job spend caps
+- Push notifications via ntfy.sh
+- Web UI: dashboard, job history, settings, library browser, glossary editor
+- All settings are live-mutable, no container restart needed
+  </Overview>
+  <Category>MediaApp:Other Tools: Status:Stable</Category>
+  <WebUI>http://[IP]:[PORT:9000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/jesposito/unraid_templates/main/templates/translarr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/jesposito/unraid_templates/main/images/translarr-icon.png</Icon>
+  <ReadMe>https://raw.githubusercontent.com/jesposito/translarr/main/README.md</ReadMe>
+  <ExtraSearchTerms>subtitle subtitles translation translate srt sonarr radarr emby jellyfin plex bazarr arr ai llm anthropic openai ollama whisper</ExtraSearchTerms>
+  <DonateText>Buy me a coffee</DonateText>
+  <DonateLink>https://buymeacoffee.com/jesposito</DonateLink>
+  <Changes>
+### 2026-05-16
+
+- Initial Community Apps release
+  </Changes>
+
+  <!-- ==================== ALWAYS VISIBLE ==================== -->
+  <Config Name="Web UI Port" Target="9000" Default="9100" Mode="tcp" Description="Host port to map to container port 9000 (Web UI and API)." Type="Port" Display="always" Required="true" Mask="false">9100</Config>
+  <Config Name="Media Library" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Path to your media library (movies, TV shows). Translarr writes translated .srt files next to source videos." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
+  <Config Name="Config / Data" Target="/data" Default="/mnt/user/appdata/translarr" Mode="rw" Description="Persistent storage for database and settings. Include this in backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/translarr</Config>
+  <Config Name="LLM Provider" Target="LLM_PROVIDER" Default="anthropic" Description="anthropic, openai, ollama, deepseek, or gemini" Type="Variable" Display="always" Required="true" Mask="false">anthropic</Config>
+  <Config Name="LLM Model" Target="LLM_MODEL" Default="claude-sonnet-4-6" Description="Model identifier (e.g. claude-sonnet-4-6, deepseek-chat, gemini-2.5-flash)." Type="Variable" Display="always" Required="false" Mask="false">claude-sonnet-4-6</Config>
+  <Config Name="Anthropic API Key" Target="ANTHROPIC_API_KEY" Default="" Description="Required when LLM Provider is anthropic. Get one at console.anthropic.com." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Target Language" Target="TARGET_LANG" Default="en" Description="ISO 639-1 code for target language (en, de, es, fr, ja, etc.)." Type="Variable" Display="always" Required="false" Mask="false">en</Config>
+  <Config Name="Daily Cost Cap (cents)" Target="MAX_COST_CENTS_PER_DAY" Default="1000" Description="Hard kill-switch in cents (1000 = $10). Translations stop until midnight UTC." Type="Variable" Display="always" Required="false" Mask="false">1000</Config>
+
+  <!-- ==================== ADVANCED (Show more settings) ==================== -->
+  <Config Name="OpenAI API Key" Target="OPENAI_API_KEY" Default="" Description="Required when LLM Provider is openai." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="DeepSeek API Key" Target="DEEPSEEK_API_KEY" Default="" Description="Required when LLM Provider is deepseek. Approximately $0.10 per episode." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Gemini API Key" Target="GEMINI_API_KEY" Default="" Description="Required when LLM Provider is gemini. Flash tier is approximately $0.08 per episode." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Per-Job Cost Cap (cents)" Target="MAX_COST_CENTS_PER_JOB" Default="500" Description="Max spend per single translation in cents (500 = $5)." Type="Variable" Display="advanced" Required="false" Mask="false">500</Config>
+  <Config Name="Max Concurrent Jobs" Target="MAX_CONCURRENT" Default="2" Description="How many translations may run in parallel." Type="Variable" Display="advanced" Required="false" Mask="false">2</Config>
+  <Config Name="Webhook Secret" Target="WEBHOOK_SECRET" Default="" Description="Shared secret for arr webhook auth. Empty = no auth (fine on a private LAN)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Emby URL" Target="EMBY_URL" Default="" Description="Emby server URL for library refresh hooks (e.g. http://emby:8096)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Emby API Key" Target="EMBY_API_KEY" Default="" Description="Emby API key for library refresh and the in-player subtitle picker." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Jellyfin URL" Target="JELLYFIN_URL" Default="" Description="Jellyfin server URL for library refresh hooks." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Jellyfin API Key" Target="JELLYFIN_API_KEY" Default="" Description="Jellyfin API key for library refresh." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="ntfy URL" Target="NTFY_URL" Default="" Description="ntfy.sh push endpoint for job notifications. Empty = off." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Ollama Host" Target="OLLAMA_HOST" Default="http://ollama:11434" Description="Ollama server URL (for the free local provider)." Type="Variable" Display="advanced" Required="false" Mask="false">http://ollama:11434</Config>
+</Container>
