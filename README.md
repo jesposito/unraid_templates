@@ -25,14 +25,17 @@ https://github.com/jesposito/unraid_templates
 unraid_templates/
 ├── LICENSE                       MIT
 ├── README.md
+├── icon.svg                      Maintainer / repo icon
 ├── ca_profile.xml                Maintainer profile (required by CA)
-├── images/                       Template icons (1024x1024 PNG)
+├── images/                       Per-template icons (1024x1024 PNG)
 │   ├── facet-icon.png
 │   └── translarr-icon.png
 └── templates/                    Docker container templates
     ├── facet.xml
     └── translarr.xml
 ```
+
+Layout matches the [builder guide starter](https://ca.unraid.net/submit/help/builders) recommendation.
 
 ## Support
 

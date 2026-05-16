@@ -10,7 +10,7 @@ Self-hosted apps I build and run on Unraid.
 
 All templates are open source under MIT. Support and issues via the GitHub repo for each app.
   </Profile>
-  <Icon>https://avatars.githubusercontent.com/u/6147236?v=4&amp;s=512</Icon>
-  <WebPage>https://github.com/jesposito</WebPage>
-  <Support>https://github.com/jesposito/unraid_templates/issues</Support>
+  <Icon>https://raw.githubusercontent.com/jesposito/unraid_templates/main/icon.svg</Icon>
+  <WebPage>https://github.com/jesposito/unraid_templates</WebPage>
+  <Forum>https://github.com/jesposito/unraid_templates/issues</Forum>
 </CommunityApplications>
